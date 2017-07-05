@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                 intento.putExtra(getResources().getString(R.string.ptelefono),contactos.get(position).getTelefono());
                 intento.putExtra(getResources().getString(R.string.pemail),contactos.get(position).getEmail());
                 startActivity(intento);
+
+                //Despues de ejecutar el intent la actividad sera eliminada (Esto para ahorrar consumo de RAM)
+                finish();//finaliza esta actividad
             }
         });
 

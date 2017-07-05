@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,5 +65,17 @@ public class DetalleContactoActivity extends AppCompatActivity {
         emailIntent.setType("message/rfc822");
         //vamos a crear un selector para elegir entre todas las apps de correo
         startActivity(Intent.createChooser(emailIntent,"Email "));
+    }
+
+    @Override
+    /*Vamos a capturar el evento de toque sobre el boton "back" para volver a la actividad anterior (esto por que la matamos antes y ya no esta en la pila)*/
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            Intent intento = new Intent(DetalleContactoActivity.this, MainActivity.class);
+            startActivity(intento);
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }
