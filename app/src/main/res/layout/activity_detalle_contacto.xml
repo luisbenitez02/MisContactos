@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Se acomoda en un linea Layout vertical, asi todos los elementos
+quedaran uno debajo del otro-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.luisb.miscontactos.DetalleContactoActivity"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nombre"
+        android:textStyle="bold"
+        android:textSize="@dimen/nombre_contacto"/>
+
+    <!--Se acomoda en un linea Layout Horizontal para poner la imagen
+    y al lado el texto-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_top">
+
+        <ImageView
+            android:id="@+id/imgPhone"
+            android:layout_width="@dimen/size_text_i"
+            android:layout_height="match_parent"
+            android:src="@drawable/phone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTelefono"
+            android:text="@string/telefono"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/size_text_i"/>
+
+    </LinearLayout>
+    <!--Se acomoda en un linea Layout Horizontal para poner la imagen
+    y al lado el texto-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_top">
+
+        <ImageView
+            android:id="@+id/imgEmail"
+            android:layout_width="@dimen/size_text_i"
+            android:layout_height="match_parent"
+            android:src="@drawable/message"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvEmail"
+            android:text="@string/email"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+</LinearLayout>
