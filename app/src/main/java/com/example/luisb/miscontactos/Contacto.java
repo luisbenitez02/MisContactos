@@ -15,6 +15,7 @@ public class Contacto {
     public Contacto(String nombre, String telefono, String email) {
         this.nombre = nombre;
         this.telefono = telefono;
+        this.email = email;
     }
 
     public String getNombre() {

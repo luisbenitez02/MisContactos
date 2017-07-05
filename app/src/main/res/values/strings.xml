@@ -3,4 +3,11 @@
     <string name="nombre">Luis Benitez</string>
     <string name="telefono">315960144</string>
     <string name="email">luisbenitez@mail.com</string>
+
+    <!--Vamos a declarar los string que la actividad principal (lista de contactos)
+     nos pasa como parametros al dar click sobre un elemento,
+     estos seran los que mostraremos en la actividad de detalle-->
+    <string name="pnombre">nombre</string>
+    <string name="ptelefono">telefono</string>
+    <string name="pemail">email</string>
 </resources>
