@@ -24,7 +24,8 @@ quedaran uno debajo del otro-->
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/margin_top">
+        android:layout_marginTop="@dimen/margin_top"
+        android:onClick="llamar"><!--Ejecutamos el metodo llamar-->
 
         <ImageView
             android:id="@+id/imgPhone"
@@ -47,7 +48,8 @@ quedaran uno debajo del otro-->
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/margin_top">
+        android:layout_marginTop="@dimen/margin_top"
+        android:onClick="enviarMail">
 
         <ImageView
             android:id="@+id/imgEmail"

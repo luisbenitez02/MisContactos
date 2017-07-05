@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
         contactos.add(new Contacto("Luis Benitez", "315478965","luis@mimail.co"));
         contactos.add(new Contacto("Daniel Arevalo", "315478475","daniloca@mail.net"));
-        contactos.add(new Contacto("Patricia Criollo", "35478965",""));
-        contactos.add(new Contacto("Ana Lopez", "874599621","anita@pepa.co"));
-        contactos.add(new Contacto("Hernando", "458745637","pepito@mail.co"));
+        contactos.add(new Contacto("Patricia Criollo", "3184602589",""));
+        contactos.add(new Contacto("Ana Lopez", "3225046132","anita@pepa.co"));
+        contactos.add(new Contacto("Hernando", "3225046155","pepito@mail.co"));
 
         //vamos a llenar un array de contactos solo con sus nombre
         ArrayList<String> nombresContacto = new ArrayList<>();
