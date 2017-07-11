@@ -3,6 +3,9 @@ package com.example.luisb.miscontactos;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,37 +18,35 @@ public class MainActivity extends AppCompatActivity {
     //nuestro array list, seran contactos ()incluyendo sus elementos
     ArrayList<Contacto> contactos;
 
+    private RecyclerView listaContactos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        contactos= new ArrayList<Contacto>();
+        listaContactos = (RecyclerView) findViewById(R.id.rvContactos);
 
-        contactos.add(new Contacto("Luis Benitez", "315478965","luis@mimail.co"));
-        contactos.add(new Contacto("Daniel Arevalo", "315478475","daniloca@mail.net"));
-        contactos.add(new Contacto("Patricia Criollo", "3184602589",""));
-        contactos.add(new Contacto("Ana Lopez", "3225046132","anita@pepa.co"));
-        contactos.add(new Contacto("Hernando", "3225046155","pepito@mail.co"));
+        //LinearLayoutManager llm = new LinearLayoutManager(this);//mostrara uno bajo el otro
+        GridLayoutManager llm = new GridLayoutManager(this,2);//muestra en grid (cuantas columnas?)
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        //vamos a llenar un array de contactos solo con sus nombre
-        ArrayList<String> nombresContacto = new ArrayList<>();
-        for (Contacto contacto:contactos) {
-            nombresContacto.add(contacto.getNombre());
-        }
-
+        listaContactos.setLayoutManager(llm);//el recycler view se comportara como Linear layout
+        inicializarListaContactos();
+        inicializarAdaptador();
+/*
         ListView lstContactos = (ListView) findViewById(R.id.lstContactos);
 
         //Debemos utilizar un adaptador si queremos llemar un ListView
         //simple_list_item = un layout para la lista sencillo
         //aqui vamos a llenar el list View
-        lstContactos.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombresContacto));
+        lstContactos.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombresContacto));*/
 
         /*vamos a crear un intent Implicito: nos permitira unir las actividades */
 
         //escuchara cuando se hace click sobre elemento de la lista
 
-        lstContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      /*  lstContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //donde estoy y a donde quiero ir
@@ -65,7 +66,24 @@ public class MainActivity extends AppCompatActivity {
                 //Despues de ejecutar el intent la actividad sera eliminada (Esto para ahorrar consumo de RAM)
                 finish();//finaliza esta actividad
             }
-        });
+        });*/
 
+    }
+
+    /*para inicializar adaptador*/
+    public void inicializarAdaptador(){
+       ContactoAdaptador adaptador = new ContactoAdaptador(contactos);
+        //asignamos el adaptador
+        listaContactos.setAdapter(adaptador);
+    }
+
+    public void inicializarListaContactos(){
+        contactos= new ArrayList<Contacto>();
+
+        contactos.add(new Contacto("Luis Benitez", "315478965","luis@mimail.co",R.drawable.fresa));
+        contactos.add(new Contacto("Daniel Arevalo", "315478475","daniloca@mail.net",R.drawable.mora));
+        contactos.add(new Contacto("Patricia Criollo", "3184602589","",R.drawable.naranja));
+        contactos.add(new Contacto("Ana Lopez", "3225046132","anita@pepa.co",R.drawable.pera));
+        contactos.add(new Contacto("Hernando", "3225046155","pepito@mail.co",R.drawable.sandia));
     }
 }

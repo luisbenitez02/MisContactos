@@ -3,4 +3,13 @@
     <dimen name="nombre_contacto">33dp</dimen>
     <dimen name="size_text_i">20dp</dimen>
     <dimen name="margin_top">20dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="bordes">4dp</dimen>
+
+    <dimen name="nombre_cardview">20sp</dimen>
+    <dimen name="img_ancho">130dp</dimen>
+    <dimen name="card_ancho">150dp</dimen>
+    <dimen name="layout_margen">4dp</dimen>
+    <dimen name="espacio_card">8dp</dimen>
+    <dimen name="padding_recycler">24dp</dimen>
 </resources>
