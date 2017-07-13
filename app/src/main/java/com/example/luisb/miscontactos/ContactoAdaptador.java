@@ -1,11 +1,15 @@
 package com.example.luisb.miscontactos;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -16,10 +20,13 @@ import java.util.ArrayList;
 public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.ContactoViewHolder>{
 
     ArrayList<Contacto> contactos;
+    Activity activity;
 
     /*creamos este constructor*/
-    public ContactoAdaptador(ArrayList<Contacto> contactos){
+    //ahora le pasamos un activity
+    public ContactoAdaptador(ArrayList<Contacto> contactos, Activity activity){
         this.contactos = contactos;
+        this.activity = activity;
     }
 
     @Override
@@ -38,12 +45,31 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     * */
     @Override
     public void onBindViewHolder(ContactoViewHolder contactoViewHolder, int position) {
-        Contacto contacto =  contactos.get(position);
+        final Contacto contacto =  contactos.get(position);
 
         //asignamos los elementos a las vistas
         contactoViewHolder.imgFoto.setImageResource(contacto.getFoto());
         contactoViewHolder.tvNombreCV.setText(contacto.getNombre());
         contactoViewHolder.tvtelefonoCV.setText(contacto.getTelefono());
+
+        /* Vamos a hacer que cada uno de nuestros items seal ckicleables */
+        contactoViewHolder.imgFoto.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //mostramos un toast al tocar el elemento con el nombre
+                Toast.makeText(activity, contacto.getNombre(), Toast.LENGTH_LONG).show();
+
+                //intento que nos llevara a la pagina de detalle del contacto
+                Intent intento = new Intent(activity, DetalleContactoActivity.class);
+
+                intento.putExtra("nombre",contacto.getNombre());
+                intento.putExtra("telefono",contacto.getTelefono());
+                intento.putExtra("email",contacto.getEmail());
+
+                activity.startActivity(intento);
+            }
+        });
     }
 
     @Override
@@ -59,6 +85,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         private ImageView imgFoto;
         private TextView tvNombreCV;
         private  TextView tvtelefonoCV;
+        private ImageButton
 
         public ContactoViewHolder(View itemView) {
             super(itemView);

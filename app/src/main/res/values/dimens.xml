@@ -11,5 +11,7 @@
     <dimen name="card_ancho">150dp</dimen>
     <dimen name="layout_margen">4dp</dimen>
     <dimen name="espacio_card">8dp</dimen>
-    <dimen name="padding_recycler">24dp</dimen>
+    <dimen name="padding_recycler">18dp</dimen>
+    <dimen name="margin_lados_main">5dp</dimen>
+    <dimen name="image_buton">38dp</dimen>
 </resources>

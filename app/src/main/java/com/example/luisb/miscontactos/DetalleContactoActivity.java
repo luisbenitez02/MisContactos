@@ -27,9 +27,9 @@ public class DetalleContactoActivity extends AppCompatActivity {
         //vamos a recibir los parametros
         Bundle parametros = getIntent().getExtras();
 
-        String nombre = parametros.getString(getResources().getString(R.string.pnombre));
-        String telefono = parametros.getString(getResources().getString(R.string.ptelefono));
-        String email = parametros.getString(getResources().getString(R.string.pemail));
+        String nombre = parametros.getString("nombre");
+        String telefono = parametros.getString("telefono");
+        String email = parametros.getString("email");
 
         //vamos a mostrar los datos en la view
         tvNombre = (TextView) findViewById(R.id.tvNombre);

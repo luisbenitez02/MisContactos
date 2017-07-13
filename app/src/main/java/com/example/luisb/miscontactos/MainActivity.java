@@ -1,15 +1,9 @@
 package com.example.luisb.miscontactos;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -18,20 +12,20 @@ public class MainActivity extends AppCompatActivity {
     //nuestro array list, seran contactos ()incluyendo sus elementos
     ArrayList<Contacto> contactos;
 
-    private RecyclerView listaContactos;
+    private RecyclerView rvContactos;//Recycler View contactos
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listaContactos = (RecyclerView) findViewById(R.id.rvContactos);
+        rvContactos = (RecyclerView) findViewById(R.id.rvContactos);
 
-        //LinearLayoutManager llm = new LinearLayoutManager(this);//mostrara uno bajo el otro
-        GridLayoutManager llm = new GridLayoutManager(this,2);//muestra en grid (cuantas columnas?)
+        LinearLayoutManager llm = new LinearLayoutManager(this);//mostrara uno bajo el otro
+        //GridLayoutManager llm = new GridLayoutManager(this,2);//muestra en grid (cuantas columnas?)
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        listaContactos.setLayoutManager(llm);//el recycler view se comportara como Linear layout
+        rvContactos.setLayoutManager(llm);//el recycler view se comportara como Linear layout
         inicializarListaContactos();
         inicializarAdaptador();
 /*
@@ -72,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
     /*para inicializar adaptador*/
     public void inicializarAdaptador(){
-       ContactoAdaptador adaptador = new ContactoAdaptador(contactos);
+       ContactoAdaptador adaptador = new ContactoAdaptador(contactos, this);
         //asignamos el adaptador
-        listaContactos.setAdapter(adaptador);
+        rvContactos.setAdapter(adaptador);
     }
 
     public void inicializarListaContactos(){
