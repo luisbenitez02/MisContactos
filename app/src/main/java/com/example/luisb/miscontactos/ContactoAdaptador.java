@@ -70,6 +70,15 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
                 activity.startActivity(intento);
             }
         });
+
+        /*Ahora vamos a hacer clickeable la manito de me gusta*/
+        contactoViewHolder.btnLike.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(activity, "Un like para " + contacto.getNombre(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -85,7 +94,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         private ImageView imgFoto;
         private TextView tvNombreCV;
         private  TextView tvtelefonoCV;
-        private ImageButton
+        private ImageButton btnLike;
 
         public ContactoViewHolder(View itemView) {
             super(itemView);
@@ -93,6 +102,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
             imgFoto         = (ImageView) itemView.findViewById(R.id.imgFoto);
             tvNombreCV      = (TextView) itemView.findViewById(R.id.tvNombreCV);
             tvtelefonoCV    = (TextView) itemView.findViewById(R.id.tvTelefonoCV);
+            btnLike = (ImageButton) itemView.findViewById(R.id.btnLike);
         }
     }
 }

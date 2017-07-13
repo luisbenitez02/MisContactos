@@ -30,7 +30,8 @@
             <ImageButton
                 android:layout_width="@dimen/image_buton"
                 android:layout_height="@dimen/image_buton"
-                android:src="@drawable/like"/>
+                android:src="@drawable/like"
+                android:id="@+id/btnLike"/>
             
             <LinearLayout
                 android:layout_width="wrap_content"
