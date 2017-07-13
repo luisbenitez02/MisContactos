@@ -9,6 +9,9 @@ quedaran uno debajo del otro-->
     tools:context="com.example.luisb.miscontactos.DetalleContactoActivity"
     android:orientation="vertical">
 
+    <include android:id="@+id/miActionBar"
+        layout="@layout/actionbar"/><!--importamos nuestro action bar-->
+
 
     <TextView
         android:id="@+id/tvNombre"
@@ -25,7 +28,10 @@ quedaran uno debajo del otro-->
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="@dimen/margin_top"
-        android:onClick="llamar"><!--Ejecutamos el metodo llamar-->
+        android:onClick="llamar"
+        android:paddingTop="@dimen/padding_detalle"
+        android:paddingBottom="@dimen/padding_detalle"
+        android:paddingLeft="@dimen/padding_detalle"><!--Ejecutamos el metodo llamar-->
 
         <ImageView
             android:id="@+id/imgPhone"
@@ -39,7 +45,8 @@ quedaran uno debajo del otro-->
             android:id="@+id/tvTelefono"
             android:text="@string/telefono"
             android:layout_gravity="center_vertical"
-            android:textSize="@dimen/size_text_i"/>
+            android:textSize="@dimen/size_text_i"
+            android:padding="@dimen/padding_detalle"/>
 
     </LinearLayout>
     <!--Se acomoda en un linea Layout Horizontal para poner la imagen
@@ -49,7 +56,10 @@ quedaran uno debajo del otro-->
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="@dimen/margin_top"
-        android:onClick="enviarMail">
+        android:onClick="enviarMail"
+        android:paddingTop="@dimen/padding_detalle"
+        android:paddingBottom="@dimen/padding_detalle"
+        android:paddingLeft="@dimen/padding_detalle">
 
         <ImageView
             android:id="@+id/imgEmail"

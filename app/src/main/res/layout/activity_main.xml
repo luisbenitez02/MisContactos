@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.luisb.miscontactos.MainActivity">
 
+    <include android:id="@+id/miActionBar"
+        layout="@layout/actionbar"><!--importamos nuestro action bar-->
+
+    </include>
+
     <!--Vamos a crear una lista de contactos-->
     <!--<ListView
         android:id="@+id/lstContactos"
@@ -20,6 +25,7 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/margin_lados_main"
-        android:layout_marginRight="@dimen/margin_lados_main" />
+        android:layout_marginRight="@dimen/margin_lados_main"
+        android:layout_below="@id/miActionBar"/>
 
 </RelativeLayout>
