@@ -1,4 +1,4 @@
-package com.example.luisb.miscontactos;
+package com.example.luisb.miscontactos.pojo;
 
 /**
  * Created by luisb on 4/07/2017.

@@ -17,4 +17,5 @@
 
     <dimen name="actionbar">4dp</dimen>
     <dimen name="padding_detalle">6dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

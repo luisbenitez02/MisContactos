@@ -9,8 +9,8 @@ quedaran uno debajo del otro-->
     tools:context="com.example.luisb.miscontactos.DetalleContactoActivity"
     android:orientation="vertical">
 
-    <include android:id="@+id/miActionBar"
-        layout="@layout/actionbar"/><!--importamos nuestro action bar-->
+    <!--<include android:id="@+id/miActionBar"
+        layout="@layout/actionbar"/>--><!--importamos nuestro action bar-->
 
 
     <TextView

@@ -25,8 +25,8 @@ public class DetalleContactoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_contacto);
 
-        Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
-        setSupportActionBar(miActionBar);//para que se vea bien en todas las pantallas
+        //Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
+        //setSupportActionBar(miActionBar);//para que se vea bien en todas las pantallas
 
         //vamos a recibir los parametros
         Bundle parametros = getIntent().getExtras();

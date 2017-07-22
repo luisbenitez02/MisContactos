@@ -1,28 +1,50 @@
 package com.example.luisb.miscontactos;
 
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+
+import com.example.luisb.miscontactos.adapter.ContactoAdaptador;
+import com.example.luisb.miscontactos.adapter.PageAdapter;
+import com.example.luisb.miscontactos.fragment.PerfilFragment;
+import com.example.luisb.miscontactos.fragment.RecyclerViewFragment;
+import com.example.luisb.miscontactos.pojo.Contacto;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     //nuestro array list, seran contactos ()incluyendo sus elementos
-    ArrayList<Contacto> contactos;
+    private ArrayList<Contacto> contactos;
 
     private RecyclerView rvContactos;//Recycler View contactos
+
+    /*Variables de nuestro Fragment*/
+    private Toolbar miToolbar;
+    private TabLayout miTabLayout;
+    private ViewPager miViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
-        setSupportActionBar(miActionBar);//para que se vea bien en todas las pantallas
 
+        //Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
+        //setSupportActionBar(miActionBar);//para que se vea bien en todas las pantallas
+
+        miToolbar = (Toolbar) findViewById(R.id.mitoolbar);
+        miTabLayout = (TabLayout) findViewById(R.id.miTabLayout);
+        miViewPager = (ViewPager) findViewById(R.id.miViewPager);
+
+        setUpViewPager();
+
+        /*
         rvContactos = (RecyclerView) findViewById(R.id.rvContactos);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);//mostrara uno bajo el otro
@@ -32,40 +54,26 @@ public class MainActivity extends AppCompatActivity {
         rvContactos.setLayoutManager(llm);//el recycler view se comportara como Linear layout
         inicializarListaContactos();
         inicializarAdaptador();
-/*
-        ListView lstContactos = (ListView) findViewById(R.id.lstContactos);
+        */
+        if(miToolbar !=null){
+            setSupportActionBar(miToolbar);
+        }
 
-        //Debemos utilizar un adaptador si queremos llemar un ListView
-        //simple_list_item = un layout para la lista sencillo
-        //aqui vamos a llenar el list View
-        lstContactos.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombresContacto));*/
+    }
 
-        /*vamos a crear un intent Implicito: nos permitira unir las actividades */
+    private ArrayList<Fragment> agregarFragment(){
+        ArrayList<Fragment> fragments = new ArrayList<>();
 
-        //escuchara cuando se hace click sobre elemento de la lista
+        fragments.add(new RecyclerViewFragment());
+        fragments.add(new PerfilFragment());
 
-      /*  lstContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //donde estoy y a donde quiero ir
-                Intent intento = new Intent(MainActivity.this, DetalleContactoActivity.class);
+        return fragments;
+    }
 
-                //necesitamos pasar los parametros del elemento seleccionado
-                //con putextra los añadimos al intent
-                //(nombre, telefono, mail) ---> uno por uno
-                //getResources().getString(R.string.pnombre) --> corresponde}
-                //a las claves que utilizaremos para identificar el elemento
-                //y tambien son definidos como recursos string
-                intento.putExtra(getResources().getString(R.string.pnombre),contactos.get(position).getNombre());
-                intento.putExtra(getResources().getString(R.string.ptelefono),contactos.get(position).getTelefono());
-                intento.putExtra(getResources().getString(R.string.pemail),contactos.get(position).getEmail());
-                startActivity(intento);
-
-                //Despues de ejecutar el intent la actividad sera eliminada (Esto para ahorrar consumo de RAM)
-                finish();//finaliza esta actividad
-            }
-        });*/
-
+    /*Pone en 'orbita' los fragments */
+    private void setUpViewPager(){
+        miViewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),agregarFragment()));
+        miTabLayout.setupWithViewPager(miViewPager);
     }
 
     /*para inicializar adaptador*/

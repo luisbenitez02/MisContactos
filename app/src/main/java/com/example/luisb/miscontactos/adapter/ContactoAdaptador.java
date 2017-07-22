@@ -1,4 +1,4 @@
-package com.example.luisb.miscontactos;
+package com.example.luisb.miscontactos.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.luisb.miscontactos.pojo.Contacto;
+import com.example.luisb.miscontactos.DetalleContactoActivity;
+import com.example.luisb.miscontactos.R;
 
 import java.util.ArrayList;
 
