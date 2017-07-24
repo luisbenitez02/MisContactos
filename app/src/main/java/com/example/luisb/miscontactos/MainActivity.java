@@ -44,17 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         setUpViewPager();
 
-        /*
-        rvContactos = (RecyclerView) findViewById(R.id.rvContactos);
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);//mostrara uno bajo el otro
-        //GridLayoutManager llm = new GridLayoutManager(this,2);//muestra en grid (cuantas columnas?)
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        rvContactos.setLayoutManager(llm);//el recycler view se comportara como Linear layout
-        inicializarListaContactos();
-        inicializarAdaptador();
-        */
         if(miToolbar !=null){
             setSupportActionBar(miToolbar);
         }
@@ -74,22 +63,8 @@ public class MainActivity extends AppCompatActivity {
     private void setUpViewPager(){
         miViewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),agregarFragment()));
         miTabLayout.setupWithViewPager(miViewPager);
-    }
 
-    /*para inicializar adaptador*/
-    public void inicializarAdaptador(){
-       ContactoAdaptador adaptador = new ContactoAdaptador(contactos, this);
-        //asignamos el adaptador
-        rvContactos.setAdapter(adaptador);
-    }
-
-    public void inicializarListaContactos(){
-        contactos= new ArrayList<Contacto>();
-
-        contactos.add(new Contacto("Luis Benitez", "315478965","luis@mimail.co",R.drawable.fresa));
-        contactos.add(new Contacto("Daniel Arevalo", "315478475","daniloca@mail.net",R.drawable.mora));
-        contactos.add(new Contacto("Patricia Criollo", "3184602589","",R.drawable.naranja));
-        contactos.add(new Contacto("Ana Lopez", "3225046132","anita@pepa.co",R.drawable.pera));
-        contactos.add(new Contacto("Hernando", "3225046155","pepito@mail.co",R.drawable.sandia));
+        miTabLayout.getTabAt(0).setIcon(R.drawable.ic_contacts);//asignamos el icono
+        miTabLayout.getTabAt(1).setIcon(R.drawable.ic_action_name);//segunda tab
     }
 }
