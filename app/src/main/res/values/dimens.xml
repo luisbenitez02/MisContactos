@@ -13,7 +13,7 @@
     <dimen name="espacio_card">8dp</dimen>
     <dimen name="padding_recycler">18dp</dimen>
     <dimen name="margin_lados_main">5dp</dimen>
-    <dimen name="image_buton">38dp</dimen>
+    <dimen name="image_buton">40dp</dimen>
 
     <dimen name="actionbar">4dp</dimen>
     <dimen name="padding_detalle">6dp</dimen>

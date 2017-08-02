@@ -57,10 +57,10 @@ public class RecyclerViewFragment extends Fragment {
     public void inicializarListaContactos(){
         contactos= new ArrayList<Contacto>();
 
-        contactos.add(new Contacto("Luis Benitez", "315478965","luis@mimail.co",R.drawable.fresa));
-        contactos.add(new Contacto("Daniel Arevalo", "315478475","daniloca@mail.net",R.drawable.mora));
-        contactos.add(new Contacto("Patricia Criollo", "3184602589","",R.drawable.naranja));
-        contactos.add(new Contacto("Ana Lopez", "3225046132","anita@pepa.co",R.drawable.pera));
-        contactos.add(new Contacto("Hernando", "3225046155","pepito@mail.co",R.drawable.sandia));
+        contactos.add(new Contacto("Luis Benitez", "315478965","luis@mimail.co",R.drawable.fresa, likes));
+        contactos.add(new Contacto("Daniel Arevalo", "315478475","daniloca@mail.net",R.drawable.mora, likes));
+        contactos.add(new Contacto("Patricia Criollo", "3184602589","",R.drawable.naranja, likes));
+        contactos.add(new Contacto("Ana Lopez", "3225046132","anita@pepa.co",R.drawable.pera, likes));
+        contactos.add(new Contacto("Hernando", "3225046155","pepito@mail.co",R.drawable.sandia, likes));
     }
 }

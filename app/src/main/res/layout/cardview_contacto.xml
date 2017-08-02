@@ -22,22 +22,23 @@
             android:scaleType="centerCrop"
             android:layout_gravity="center_horizontal"/>
         
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <ImageButton
+                android:id="@+id/btnLike"
                 android:layout_width="@dimen/image_buton"
                 android:layout_height="@dimen/image_buton"
+                android:scaleType="centerCrop"
                 android:src="@drawable/like"
-                android:id="@+id/btnLike"/>
-            
+                android:layout_alignParentStart="true"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginStart="@dimen/bordes">
+                android:layout_centerHorizontal="true">
 
                 <TextView
                     android:id="@+id/tvNombreCV"
@@ -55,7 +56,16 @@
 
             </LinearLayout>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tvLikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plikes"
+                android:textSize="@dimen/nombre_cardview"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

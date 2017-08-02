@@ -55,6 +55,8 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         contactoViewHolder.imgFoto.setImageResource(contacto.getFoto());
         contactoViewHolder.tvNombreCV.setText(contacto.getNombre());
         contactoViewHolder.tvtelefonoCV.setText(contacto.getTelefono());
+        contactoViewHolder.tvLikes.setText(String.valueOf(contacto.getLikes()) + " Likes");//parseamos int a string
+
 
         /* Vamos a hacer que cada uno de nuestros items seal ckicleables */
         contactoViewHolder.imgFoto.setOnClickListener(new View.OnClickListener(){
@@ -99,6 +101,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         private TextView tvNombreCV;
         private  TextView tvtelefonoCV;
         private ImageButton btnLike;
+        private TextView tvLikes;
 
         public ContactoViewHolder(View itemView) {
             super(itemView);
@@ -107,6 +110,8 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
             tvNombreCV      = (TextView) itemView.findViewById(R.id.tvNombreCV);
             tvtelefonoCV    = (TextView) itemView.findViewById(R.id.tvTelefonoCV);
             btnLike = (ImageButton) itemView.findViewById(R.id.btnLike);
+            tvLikes    = (TextView) itemView.findViewById(R.id.tvLikes);
+
         }
     }
 }
