@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import com.example.luisb.miscontactos.R;
 import com.example.luisb.miscontactos.adapter.ContactoAdaptador;
 import com.example.luisb.miscontactos.pojo.Contacto;
+import com.example.luisb.miscontactos.presentador.IRecyclerViewFragmentPresenter;
+import com.example.luisb.miscontactos.presentador.RecyclerViewFragmentPresenter;
 
 import java.util.ArrayList;
 
@@ -19,11 +21,12 @@ import java.util.ArrayList;
  * Created by luisb on 20/07/2017.
  */
 
-public class RecyclerViewFragment extends Fragment {
+public class RecyclerViewFragment extends Fragment implements IRecyclerViewFragmentView{
 
     private ArrayList<Contacto> contactos;
 
     private RecyclerView rvContactos;//Recycler View contactos
+    private IRecyclerViewFragmentPresenter presenter;
 
     @Nullable
     @Override
@@ -35,32 +38,25 @@ public class RecyclerViewFragment extends Fragment {
         //return super.onCreateView(inflater, container, savedInstanceState);
 
         rvContactos = (RecyclerView) v.findViewById(R.id.rvContactos);
-
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());//mostrara uno bajo el otro
-        //GridLayoutManager llm = new GridLayoutManager(this,2);//muestra en grid (cuantas columnas?)
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        rvContactos.setLayoutManager(llm);//el recycler view se comportara como Linear layout
-        inicializarListaContactos();
-        inicializarAdaptador();
-
+        presenter = new RecyclerViewFragmentPresenter(this,getContext());
         return v;
     }
 
-    /*para inicializar adaptador*/
-    public void inicializarAdaptador(){
-        ContactoAdaptador adaptador = new ContactoAdaptador(contactos, getActivity());
-        //asignamos el adaptador
-        rvContactos.setAdapter(adaptador);
+    @Override
+    public void generarLinearLayoutVertical() {
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());// uno bajo el otro
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rvContactos.setLayoutManager(llm);//el recycler view se comportara como Linear layout
     }
 
-    public void inicializarListaContactos(){
-        contactos= new ArrayList<Contacto>();
+    @Override
+    public ContactoAdaptador crearAdaptador(ArrayList<Contacto> contactos) {
+        ContactoAdaptador adaptador = new ContactoAdaptador(contactos, getActivity());
+        return adaptador;
+    }
 
-        contactos.add(new Contacto("Luis Benitez", "315478965","luis@mimail.co",R.drawable.fresa, likes));
-        contactos.add(new Contacto("Daniel Arevalo", "315478475","daniloca@mail.net",R.drawable.mora, likes));
-        contactos.add(new Contacto("Patricia Criollo", "3184602589","",R.drawable.naranja, likes));
-        contactos.add(new Contacto("Ana Lopez", "3225046132","anita@pepa.co",R.drawable.pera, likes));
-        contactos.add(new Contacto("Hernando", "3225046155","pepito@mail.co",R.drawable.sandia, likes));
+    @Override
+    public void inicializarAdaptadorRV(ContactoAdaptador adaptador) {
+        rvContactos.setAdapter(adaptador);
     }
 }
