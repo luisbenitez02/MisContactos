@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.luisb.miscontactos.db.ConstructorContactos;
 import com.example.luisb.miscontactos.pojo.Contacto;
 import com.example.luisb.miscontactos.DetalleContactoActivity;
 import com.example.luisb.miscontactos.R;
@@ -37,7 +38,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     public ContactoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //vamos a inflar nuestro layout con la cardView (Recycler view)
         //lo pasara al viewholder para que el obtenga cada elemento (views)
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_contacto,parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_grid_contacto,parent, false);
 
         return new ContactoViewHolder(v);
     }
@@ -48,13 +49,13 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     * asocia cada elemento de la vista a cada view
     * */
     @Override
-    public void onBindViewHolder(ContactoViewHolder contactoViewHolder, int position) {
+    public void onBindViewHolder(final ContactoViewHolder contactoViewHolder, int position) {
         final Contacto contacto =  contactos.get(position);
 
         //asignamos los elementos a las vistas
-        contactoViewHolder.imgFoto.setImageResource(contacto.getFoto());
-        contactoViewHolder.tvNombreCV.setText(contacto.getNombre());
-        contactoViewHolder.tvtelefonoCV.setText(contacto.getTelefono());
+        //contactoViewHolder.imgFoto.setImageResource(contacto.getUrlFoto());
+        /*contactoViewHolder.tvNombreCV.setText(contacto.getNombre());
+        contactoViewHolder.tvtelefonoCV.setText(contacto.getTelefono());*/
         contactoViewHolder.tvLikes.setText(String.valueOf(contacto.getLikes()) + " Likes");//parseamos int a string
 
 
@@ -64,26 +65,32 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
             @Override
             public void onClick(View v) {
                 //mostramos un toast al tocar el elemento con el nombre
-                Toast.makeText(activity, contacto.getNombre(), Toast.LENGTH_LONG).show();
 
                 //intento que nos llevara a la pagina de detalle del contacto
                 Intent intento = new Intent(activity, DetalleContactoActivity.class);
 
-                intento.putExtra("nombre",contacto.getNombre());
-                intento.putExtra("telefono",contacto.getTelefono());
-                intento.putExtra("email",contacto.getEmail());
+                intento.putExtra("url",contacto.getUrlFoto());
+                intento.putExtra("like",contacto.getLikes());
+                //intento.putExtra("email",contacto.getEmail());
 
                 activity.startActivity(intento);
             }
         });
 
         /*Ahora vamos a hacer clickeable la manito de me gusta*/
-        contactoViewHolder.btnLike.setOnClickListener(new View.OnClickListener(){
+      /*  contactoViewHolder.btnLike.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Toast.makeText(activity, "Un like para " + contacto.getNombre(), Toast.LENGTH_SHORT).show();
+                //el activity representa nuestro contexto
+                ConstructorContactos constructorContactos = new ConstructorContactos(activity);
+
+                constructorContactos.darLikeContacto(contacto);
+
+                contactoViewHolder.tvLikes.setText(String.valueOf(constructorContactos.obtenerLikesContacto(contacto)) + " Likes");
+
             }
-        });
+        });*/
 
     }
 
@@ -98,18 +105,18 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     public static class ContactoViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView imgFoto;
-        private TextView tvNombreCV;
+       /* private TextView tvNombreCV;
         private  TextView tvtelefonoCV;
-        private ImageButton btnLike;
+        private ImageButton btnLike;*/
         private TextView tvLikes;
 
         public ContactoViewHolder(View itemView) {
             super(itemView);
 
             imgFoto         = (ImageView) itemView.findViewById(R.id.imgFoto);
-            tvNombreCV      = (TextView) itemView.findViewById(R.id.tvNombreCV);
+            /*tvNombreCV      = (TextView) itemView.findViewById(R.id.tvNombreCV);
             tvtelefonoCV    = (TextView) itemView.findViewById(R.id.tvTelefonoCV);
-            btnLike = (ImageButton) itemView.findViewById(R.id.btnLike);
+            btnLike = (ImageButton) itemView.findViewById(R.id.btnLike);*/
             tvLikes    = (TextView) itemView.findViewById(R.id.tvLikes);
 
         }

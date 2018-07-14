@@ -11,14 +11,24 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class DetalleContactoActivity extends AppCompatActivity {
     //son globales para manipularlos en los metodos de llamar y enviar mail
-    private TextView tvNombre;
+   /* private TextView tvNombre;
     private TextView tvTelefono;
-    private TextView tvEmail;
+    private TextView tvEmail;*/
+
+    private static final String KEY_EXTRA_URL = "url";//nombres de llaves con los que se enviaron parametros
+    private static final String KEY_EXTRA_LIKES = "like";
+
+
+    private ImageView imgFotoDetalle;
+    private TextView tvLikesDetalle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +41,19 @@ public class DetalleContactoActivity extends AppCompatActivity {
         //vamos a recibir los parametros
         Bundle parametros = getIntent().getExtras();
 
-        String nombre = parametros.getString("nombre");
-        String telefono = parametros.getString("telefono");
-        String email = parametros.getString("email");
+        String url = parametros.getString(KEY_EXTRA_URL);//llaves aqui
+        int likes = parametros.getInt(KEY_EXTRA_LIKES);
+
 
         //vamos a mostrar los datos en la view
-        tvNombre = (TextView) findViewById(R.id.tvNombre);
-        tvTelefono = (TextView) findViewById(R.id.tvTelefono);
-        tvEmail = (TextView) findViewById(R.id.tvEmail);
+
+        tvLikesDetalle = (TextView) findViewById(R.id.tvLikesDetalle);
 
         //le asignamos los parametros que trajimos
-        tvNombre.setText(nombre);
-        tvTelefono.setText(telefono);
-        tvEmail.setText(email);
+        //falta la foto pero es por que la gestionaremos luego
+        tvLikesDetalle.setText(String.valueOf(likes));
     }
-
+    /*
     public void llamar(View v) {
 
         String telefono = tvTelefono.getText().toString();
@@ -57,8 +65,8 @@ public class DetalleContactoActivity extends AppCompatActivity {
 
         //IMPORTANTE: Dale los permisos a la app desde la configuracion de tu telefono
             startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+telefono)));
-    }
-
+    }*/
+/*
     public void enviarMail(View v){
         String email = tvEmail.getText().toString();
 
@@ -69,7 +77,7 @@ public class DetalleContactoActivity extends AppCompatActivity {
         emailIntent.setType("message/rfc822");
         //vamos a crear un selector para elegir entre todas las apps de correo
         startActivity(Intent.createChooser(emailIntent,"Email "));
-    }
+    }*/
 
     @Override
     /*Vamos a capturar el evento de toque sobre el boton "back" para volver a la actividad anterior (esto por que la matamos antes y ya no esta en la pila)*/

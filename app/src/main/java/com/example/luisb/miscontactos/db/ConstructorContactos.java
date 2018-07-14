@@ -15,6 +15,7 @@ import java.util.ArrayList;
 /*Intermediario entre la clase que consulta la BD*/
 public class ConstructorContactos {
 
+    private static final int LIKE = 1;//aumento de los likes
     private Context context;
 
     public ConstructorContactos(Context context) {
@@ -22,15 +23,6 @@ public class ConstructorContactos {
     }
     /*NOTA: No importa de donde obtenga los datos, siempre deben venir en arrayList*/
     public ArrayList<Contacto> obtenerDatos(){
-      /*  ArrayList<Contacto> contactos= new ArrayList<Contacto>();
-
-        contactos.add(new Contacto("Luis Benitez", "315478965","luis@mimail.co", R.drawable.fresa, 5));
-        contactos.add(new Contacto("Daniel Arevalo", "315478475","daniloca@mail.net",R.drawable.mora, 10));
-        contactos.add(new Contacto("Patricia Criollo", "3184602589","",R.drawable.naranja, 3));
-        contactos.add(new Contacto("Ana Lopez", "3225046132","anita@pepa.co",R.drawable.pera, 6));
-        contactos.add(new Contacto("Hernando", "3225046155","pepito@mail.co",R.drawable.sandia, 9));
-
-        return contactos;*/
         BaseDatos db = new BaseDatos(context);
         insertarTresContactos(db);
         return db.obtenerAllContacts();
@@ -66,5 +58,21 @@ public class ConstructorContactos {
 
         db.insertarContacto(contentValues);
 
+    }
+
+    public void darLikeContacto(Contacto contacto){
+        BaseDatos db = new BaseDatos(context);
+        ContentValues contentValues = new ContentValues();
+        //lenamos el objeto
+        //obtenemos primero el ID
+        contentValues.put(ConstantesBD.TABLE_LIKES_CONTACT_ID_CONTACTO, contacto.getId());
+        contentValues.put(ConstantesBD.TABLE_LIKES_CONTACT_NUM_LIKES, LIKE);
+        db.insertarLikeContacto(contentValues);
+
+    }
+
+    public int obtenerLikesContacto(Contacto contacto){
+        BaseDatos db = new BaseDatos(context);
+        return db.obtenerLikesContacto(contacto);
     }
 }

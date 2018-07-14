@@ -6,22 +6,18 @@ package com.example.luisb.miscontactos.pojo;
 
 public class Contacto {
 
-    private int id;//No estara en el costructor pero si necesita getter y setter
-    private String nombre;
-    private String telefono;
-    private String email;
-    private int foto;
-    private int likes;
+    private String id;//No estara en el costructor pero si necesita getter y setter
+    private String fullName;
+    private String urlFoto;//la url me devuelve una cadena
+    private int likes=0;
 
 
     /*Contructor (Alt + Insert): para que el elemento exista minimo se requiere
         nombre y telefono */
 
-    public Contacto(String nombre, String telefono, String email, int foto, int likes) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.email = email;
-        this.foto = foto;
+    public Contacto(String urlFoto, String fullName, int likes) {
+        this.urlFoto = urlFoto;
+        this.fullName = fullName;
         this.likes = likes;
     }
 
@@ -29,36 +25,28 @@ public class Contacto {
 
     }
 
-    public int getFoto() {
-        return foto;
+    public String getId() {
+        return id;
     }
 
-    public void setFoto(int foto) {
-        this.foto = foto;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getUrlFoto() {
+        return urlFoto;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
     }
 
     public int getLikes() {
@@ -67,13 +55,5 @@ public class Contacto {
 
     public void setLikes(int likes) {
         this.likes = likes;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
